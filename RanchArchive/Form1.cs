@@ -26,6 +26,8 @@ namespace RanchArchive
         string userCurrentUser = Environment.UserName;
         string strDefaultSkyDriveImages = @"C:\Users\" + Environment.UserName + @"\SkyDrive\Image Gallery - Web Edited & Preview Images";
         string strRanchArchiveUpdate = @"C:\Users\" + Environment.UserName + @"\SkyDrive\Application\Desktop Applications\RanchArchive\setup.exe";
+
+        // C:\Users\Ranch\OneDrive\Image Gallery - Web Edited & Preview Images
         int intNextPanelName = 0;
         
         // SOME CONSTANTS for determining display size
@@ -225,6 +227,16 @@ namespace RanchArchive
             {
                 strDefaultSkyDriveImages = @"F:\" + @"\Hofer SkyDrive\Image Gallery - Web Edited & Preview Images";
                 strRanchArchiveUpdate = @"F:\Hofer SkyDrive\Application\Desktop Applications\RanchArchive\setup.ext";
+            }
+            if (userMachineName == "SB-02")
+            {
+                strDefaultSkyDriveImages = @"C:\Users\Ranch\OneDrive\Image Gallery - Web Edited & Preview Images";
+                strRanchArchiveUpdate = @"F:\Hofer SkyDrive\Application\Desktop Applications\RanchArchive\setup.ext";
+            }
+            if (userMachineName == "OSH-PC01")
+            {
+                string strDefaultSkyDriveImages = @"C:\Users\" + Environment.UserName + @"\OneDrive\Image Gallery - Web Edited & Preview Images";
+                string strRanchArchiveUpdate = @"C:\Users\" + Environment.UserName + @"\SkyDrive\Application\Desktop Applications\RanchArchive\setup.exe";
             }
 
             // FILL THE COMBO BOXES WITH VALUES
@@ -492,6 +504,7 @@ namespace RanchArchive
             cutline.Multiline = true;
             cutline.ScrollBars = ScrollBars.Vertical;
             cutline.Visible = true;
+            var fileToDisplay = $@"{strDefaultSkyDriveImages}\{strPicture}";
             if (File.Exists(strDefaultSkyDriveImages + @"\" + strPicture))
             {
                 pb.Load(strDefaultSkyDriveImages + @"\" + strPicture);
